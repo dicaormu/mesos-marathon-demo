@@ -8,6 +8,13 @@ Just follow the instructions inside the `vagrant-mesos` directory. Once your vag
 ### Building the image
 
 To be able to execute the example using docker, the directory `docker-image` contains the steps needed to build and create docker instances.
+For this example, i have pushed my image in dockerhub ant then  with
+
+`docker push dicaormu/app`
+
+Then, from the vagrant machine, i have pulled the image before run with marathon using
+
+`sudo docker pull dicaormu/piopiojar`
 
 ### Running the image
 
@@ -17,7 +24,7 @@ In order to deploy a new application in marathon it is just enough to make a Htt
 curl -XPOST -H "Content-Type:application/json" "http://192.168.33.10:8080/v2/apps" -d @/Users/johndoe/Documents/mesos-marathon/app.json
 ```
 
-The contents of the json file obviously depends on the kind of applcation we want to deploy. The following 
+The contents of the json file obviously depends on the kind of applcation we want to deploy. The following
 sections contains several examples.
 
 
@@ -55,7 +62,7 @@ curl -i -H "Content-type: application/json" -X POST http://192.168.33.10:8080/v2
    "type": "DOCKER",
    "volumes": [],
    "docker": {
-     "image": "imgname/httpexample:latest",
+     "image": "dicaormu/piopiojar:latest",
      "network": "BRIDGE",
      "portMappings": [{ "containerPort": 8080, "servicePort": 9000 , "hostPort": 0, "protocol": "tcp" }]
     }
@@ -84,4 +91,4 @@ It is also possible to create additional health checks to the installed applicat
       "maxConsecutiveFailures": 3
     }
 ]
- ``` 
+ ```

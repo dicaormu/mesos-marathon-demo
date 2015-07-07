@@ -10,7 +10,7 @@
    "type": "DOCKER",
    "volumes": [],
    "docker": {
-     "image": "fagossa/httpexample:latest",
+     "image": "dicaormu/piopiojar:latest",
      "network": "BRIDGE",
      "portMappings": [{ "containerPort": 8080, "servicePort": 9000 , "hostPort": 0, "protocol": "tcp" }]
     }
